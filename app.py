@@ -16,5 +16,11 @@ def add_user():
         gebruikers.append(naam)
     return redirect(url_for('home'))
 
+@app.route('/delete/<int:index>')
+def delete_user(index):
+    if 0 <= index < len(gebruikers):
+        gebruikers.pop(index)
+    return redirect(url_for('home'))
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
